@@ -1,0 +1,85 @@
+server:
+  port: 7070
+
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+      routes:
+        - id: FACILITYSERVICE
+          uri: lb://FACILITYSERVICE
+          predicates:
+            - Path=/facilities/**, /staff/**
+          filters:
+            - JwtAuthFilter
+
+        - id: COMPLIANCESERVICE
+          uri: lb://COMPLIANCESERVICE
+          predicates:
+            - Path=/compliance/**
+          filters:
+            - JwtAuthFilter
+
+
+        - id: CITIZENSERVICE
+          uri: lb://CITIZENSERVICE
+          predicates:
+            - Path=/api/citizens/**
+          filters:
+            - JwtAuthFilter
+
+
+        - id: EMERGENCYSERVICE
+          uri: lb://EMERGENCYSERVICE
+          predicates:
+            - Path=/emergencies/**
+          filters:
+            - JwtAuthFilter
+
+
+
+        - id: PATIENTTREATMENTSERVICE
+          uri: lb://PATIENTTREATMENTSERVICE
+          predicates:
+            - Path=/patients/**, /treatments/**
+          filters:
+            - JwtAuthFilter
+
+
+        - id: COMPLIANCESERVICE
+          uri: lb://COMPLIANCESERVICE
+          predicates:
+            - Path=/patients/**, /treatments/**
+
+        - id: AUTHSERVICE
+          uri: lb://AUTHSERVICE
+          predicates:
+            - Path=/auth/**, /admin/**, /api/**
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

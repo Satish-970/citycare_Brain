@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ComplianceService" />
+        <module name="AuthService" />
+        <module name="FacilityService" />
+        <module name="ServiceRegistry" />
+        <module name="PatientTreatmentService" />
+        <module name="ApiGateway" />
+        <module name="CitizenService" />
+        <module name="EmergencyService" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ConfigServer" target="21" />
+      <module name="NotificationService" target="21" />
+      <module name="SpringAdminService" target="1.8" />
+      <module name="SpringAiService" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ApiGateway" options="-parameters" />
+      <module name="AuthService" options="-parameters" />
+      <module name="CitizenService" options="-parameters" />
+      <module name="ComplianceService" options="-parameters" />
+      <module name="ConfigServer" options="-parameters" />
+      <module name="EmergencyService" options="-parameters" />
+      <module name="FacilityService" options="-parameters" />
+      <module name="NotificationService" options="-parameters" />
+      <module name="PatientTreatmentService" options="-parameters" />
+      <module name="ServiceRegistry" options="-parameters" />
+      <module name="SpringAdminService" options="" />
+      <module name="SpringAiService" options="" />
+    </option>
+  </component>
+</project>
